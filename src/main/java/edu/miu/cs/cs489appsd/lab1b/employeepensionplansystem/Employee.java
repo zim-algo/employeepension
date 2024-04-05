@@ -38,7 +38,8 @@ public class Employee {
         if (pensionPlan != null) return false;
 
         LocalDate nextMonth = LocalDate.now().plusMonths(1);
-        boolean isEligible = nextMonth.getMonth() == this.getEmploymentDate().plusYears(5).getMonth();
+        LocalDate nextYear = employmentDate.plusYears(5);
+        boolean isEligible = (nextMonth.getMonth() == nextYear.getMonth()) && (LocalDate.now().getYear() == nextYear.getYear());
         return isEligible;
     }
 }
